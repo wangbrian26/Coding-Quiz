@@ -20,6 +20,21 @@ function timer() {
 
 function startQuiz() {
     timer();
+    document.querySelector("#start").setAttribute("class", "hide")
+    for (var i = 0; i < questions.length; i++)
+        text.textContent = questions[i]
+    if(timeLeft != 0) {
+        win()
+    } else {
+        lose()
+    }
 }
 
+function win() {
+    text.textContent = "Congratulations!! You won! Your score is: " + timeLeft + "."
+}
+
+function lose() {
+    text.textContent = "Sorry, unfortunately you ran out of time. Please try again."
+}
 document.querySelector("#start").addEventListener("click", startQuiz)
