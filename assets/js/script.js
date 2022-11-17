@@ -33,8 +33,14 @@ function startQuiz() {
     choiceButton.textContent = i + 1 + "." + currentQuestion.choices[i];
     document.querySelector(".questions").appendChild(choiceButton);
   }
+  userSelection();
+}
+
+function userSelection(event) {
   var userChoice = event.target;
-  if (timeLeft != 0) {
+  if (timeLeft === 0) {
+    return;
+  } else {
     if (userChoice.value == questions[currentQuestionIndex].answer) {
       document.querySelector("#rightWrong").textContent = "Correct!";
       currentQuestionIndex++;
