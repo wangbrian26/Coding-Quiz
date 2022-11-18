@@ -64,7 +64,7 @@ p {
 }
 
 
-.questions {
+#questions {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -82,4 +82,28 @@ p {
 
 #hide {
     display: none;
+}
+
+#rightWrong {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.final {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.input {
+    margin-top: 10px;
+    width: 200px;
 }
