@@ -8,6 +8,7 @@ var currentQuestion = questions[currentQuestionIndex];
 
 time.textContent = timeLeft + " seconds left";
 
+// timer function to keep track of the time
 function timer() {
   var timerInterval = setInterval(function () {
     timeLeft--;
@@ -21,6 +22,7 @@ function timer() {
   }, 1000);
 }
 
+// hides the start screen and calls quizQuestion function after the button click to start the quiz
 function startQuiz() {
   timer();
   questionsSection.removeAttribute("id", "hide");
@@ -29,6 +31,7 @@ function startQuiz() {
   quizQuestion();
 }
 
+// pulls and displays the current question
 function quizQuestion() {
   if (timeLeft > 0) {
     questionsText.textContent = currentQuestion.title;
@@ -42,6 +45,7 @@ function quizQuestion() {
   }
 }
 
+// listens for user selection for their answer
 function userSelection(event) {
   var userChoice = event.target;
   if (event.target.className === "choiceButtons") {
@@ -56,6 +60,7 @@ function userSelection(event) {
         timeLeft -= 15;
         if (timeLeft < 0) {
           timeLeft = 0;
+          endQuiz();
         }
         quizQuestion();
       } else {
@@ -71,17 +76,15 @@ function userSelection(event) {
 }
 
 function endQuiz() {
+  clearInterval(timer);
   if (timeLeft > 0) {
-    clearInterval(timer);
     win();
   } else {
-    clearInterval(timer);
     lose();
   }
 }
 
 function win() {
-  clearInterval(timer);
   questionsSection.setAttribute("id", "hide");
   text.removeAttribute("id", "hide");
   text.textContent =
